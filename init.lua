@@ -3,6 +3,14 @@ vim.cmd("set tabstop=2")
 vim.cmd("set softtabstop=2")
 vim.cmd("set shiftwidth=2")
 vim.g.mapleader = " "
+vim.api.nvim_exec([[
+augroup FileTypeOverride
+    autocmd!
+    autocmd BufRead,BufNewFile *.jade set filetype=pug
+augroup END
+]], false)
+
+
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
